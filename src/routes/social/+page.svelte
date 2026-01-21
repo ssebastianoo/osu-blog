@@ -9,7 +9,9 @@
 
 <ul class="list-inside list-disc">
 	<li>
-		<a href="https://github.com/" class="hover:underline" target="_blank">github</a>
+		<a href="https://github.com/ssebastianoo/osu-blog" class="hover:underline" target="_blank"
+			>github</a
+		>
 	</li>
 	<li>
 		<a href="https://www.youtube.com/" class="hover:underline" target="_blank">youtube</a>
