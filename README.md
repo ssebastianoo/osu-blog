@@ -2,6 +2,8 @@
 
 an osu! themed blog that uses markdown files as posts.
 
+[preview here](https://osu.gir8.it)
+
 ## requirements!
 
 it's highly recommended to use [bun](https://bun.sh/) as runtime environment.
