@@ -1,16 +1,29 @@
-import { error } from '@sveltejs/kit'
+import { error } from '@sveltejs/kit';
+import type { PageLoad } from './$types';
+import type { Post } from '$lib/types';
+import type { Snippet } from "svelte";
 
-export async function load({ params }) {
+type MarkdownModule = {
+    default: Snippet;
+    metadata: Omit<Post, 'slug'>;
+};
 
-    try {
-        const post = await import(`../../../posts/${params.slug}.md`)
+const posts = import.meta.glob<MarkdownModule>(
+    '/src/posts/*.md'
+);
 
-        return {
-            content: post.default,
-            meta: post.metadata
-        }
-    } catch (e) {
-        console.error(e)
-        throw error(404, `Could not find ${params.slug}`)
-    }
-}
+export const load = (async ({ params }) => {
+    const path = `/src/posts/${params.slug}.md`;
+    const loader = posts[path];
+
+    if (!loader)
+        throw error(404, `Could not find ${params.slug}`);
+
+    const post = await loader();
+
+    return {
+        content: post.default,
+        meta: post.metadata,
+        slug: params.slug
+    };
+}) satisfies PageLoad;
