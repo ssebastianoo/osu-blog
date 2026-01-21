@@ -1,38 +1,43 @@
-# sv
+# osu!blog
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+an osu-themed blog that uses markdown files as posts.
 
-## Creating a project
+## requirements!
 
-If you're seeing this, you've probably already done this step. Congrats!
-
-```sh
-# create a new project in the current directory
-npx sv create
-
-# create a new project in my-app
-npx sv create my-app
-```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+it's highly recommended to use [bun](https://bun.sh/) as runtime environment.
 
 ```sh
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
+curl -fsSL https://bun.sh/install | bash
 ```
 
-## Building
+## config!
 
-To create a production version of your app:
+you can configure the blog info in `[src/config.ts](src/config.ts)`
+
+## development!
+
+to start a local development server, run
 
 ```sh
-npm run build
+bun run dev
 ```
 
-You can preview the production build with `npm run preview`.
+## build!
 
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+the static export can be built using
+
+```sh
+bun run build
+```
+
+it will generate html files in the `build` folder.
+
+## deploy!
+
+as its just html files, you can deploy it to any static hosting services like cloudflare pages or your own server.
+
+to run a quick local server use
+
+```
+bun run preview
+```
