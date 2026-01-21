@@ -1,33 +1,23 @@
 <script lang="ts">
 	import { formatDate } from '$lib/utils';
 	import config from '../../../config';
+	import SEO from '$lib/components/SEO.svelte';
 
 	let { data } = $props();
 </script>
 
+<SEO
+	title={data.meta.title + " | RonnyRun's DevLog"}
+	description={data.meta.description}
+	url={`/blog/${data.slug}`}
+	type="article"
+/>
+
 <svelte:head>
-	<title>{data.meta.title} | RonnyRun's DevLog</title>
-
-	<meta name="description" content={data.meta.description} />
-
-	<!-- Canonical -->
-	<link rel="canonical" href={`${config.siteUrl}/blog/${data.slug}`} />
-
-	<!-- Open Graph -->
-	<meta property="og:type" content="article" />
-	<meta property="og:title" content={data.meta.title} />
-	<meta property="og:description" content={data.meta.description} />
-	<meta property="og:url" content={`${config.siteUrl}/blog/${data.slug}`} />
-	<meta property="og:site_name" content="RonnyRun's DevLog" />
 	<meta property="article:published_time" content={data.meta.date} />
 	{#each data.meta.tags as tag}
 		<meta property="article:tag" content={tag} />
 	{/each}
-
-	<!-- Twitter -->
-	<meta name="twitter:card" content="summary_large_image" />
-	<meta name="twitter:title" content={data.meta.title} />
-	<meta name="twitter:description" content={data.meta.description} />
 
 	<script type="application/ld+json">
 		{JSON.stringify({
@@ -60,7 +50,7 @@
 			<div class="flex gap-2">
 				{#each data.meta.tags as tag}
 					<span class="text-xs text-accent" itemprop="keywords">
-						#{tag}
+						&gt;{tag}
 					</span>
 				{/each}
 			</div>

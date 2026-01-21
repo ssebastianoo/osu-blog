@@ -1,9 +1,10 @@
 <script lang="ts">
 	import type { PageProps } from './$types';
 	import PageTitle from '$lib/components/PageTitle.svelte';
-	let { data }: PageProps = $props();
+	import SEO from '$lib/components/SEO.svelte';
 </script>
 
+<SEO title="social!" description="dove puoi trovarmi online" url="/social" />
 <PageTitle title="social!" description="dove puoi trovarmi online" />
 
 <ul class="list-inside list-disc">

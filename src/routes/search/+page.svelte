@@ -2,6 +2,7 @@
 	import type { PageProps } from './$types';
 	import PostsList from '$lib/components/PostsList.svelte';
 	import PageTitle from '$lib/components/PageTitle.svelte';
+	import SEO from '$lib/components/SEO.svelte';
 	import { onMount } from 'svelte';
 
 	let { data }: PageProps = $props();
@@ -49,5 +50,10 @@
 	);
 </script>
 
+<SEO
+	title={'search! "' + query + '"'}
+	description={'Risultati della ricerca per "' + query + '"'}
+	url="/search"
+/>
 <PageTitle title={'search! "' + query + '"'} />
 <PostsList {posts} />
